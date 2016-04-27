@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public void setOnClickOptionOnOff(String menuNm, SwitchCompat sthOptionValue) {
+        public void setOnClickOptionOnOff(int clickId, String menuNm, SwitchCompat sthOptionValue) {
         }
 
         @Override

@@ -82,19 +82,8 @@ public abstract class SettingRecyclerAdapter extends RecyclerView.Adapter<ListVi
             LAYOUT_HEADER = header;
             SettingMenu headerView = new SettingMenu();
             headerView.setOptionType(TYPE_HEADER);
-            item.add(headerView);
+            item.add(0, headerView);
         }
-
-//        for (int i = 0; i < optionArray.size(); i++) {
-//            SettingMenu menu = new SettingMenu();
-//            menu.setTitle(optionArray.get(i).getTitle());
-//            menu.setMenuNm(optionArray.get(i).getMenuNm());
-//            menu.setOptionType(optionArray.get(i).getOptionType());
-//            menu.setOptionValue(optionArray.get(i).getOptionValue());
-//            menu.setEnableOption(optionArray.get(i).isEnableOption());
-//            menu.setListExpanded(optionArray.get(i).isListExpanded());
-//            item.add(menu);
-//        }
 
         if (footer != 0) {
             LAYOUT_FOOTER = footer;
@@ -211,17 +200,10 @@ public abstract class SettingRecyclerAdapter extends RecyclerView.Adapter<ListVi
                     public void onClick(View v) {
                         if (holder.sthOptionValue.isShown()) {
                             holder.sthOptionValue.setChecked(!holder.sthOptionValue.isChecked());
-                            setOnClickOptionOnOff(menu.getMenuNm(), holder.sthOptionValue);
+                            setOnClickOptionOnOff(menu.getClickId(), menu.getMenuNm(), holder.sthOptionValue);
                         } else if (holder.tbExpandable.isShown()) {
                             holder.tbExpandable.setChecked(!holder.tbExpandable.isChecked());
                             menu.setListExpanded(holder.tbExpandable.isChecked());
-
-                            if (holder.tbExpandable.isChecked()) {
-                                holder.tvOptionNm.setTextColor(Color.BLUE);
-                            } else {
-                                holder.tvOptionNm.setTextColor(Color.BLACK);
-                            }
-
                             setOnClickSubmenuView(menu.getMenuNm(), holder.tbExpandable.isChecked());
                         } else {
                             setOnClickOptionValue(holder.getLayoutPosition(), menu.getMenuNm(), holder.tvOptionValue);
@@ -243,7 +225,7 @@ public abstract class SettingRecyclerAdapter extends RecyclerView.Adapter<ListVi
 
     public abstract void initFooterView(View itemView);
 
-    public abstract void setOnClickOptionOnOff(String menuNm, final SwitchCompat sthOptionValue);
+    public abstract void setOnClickOptionOnOff(int clickId, String menuNm, final SwitchCompat sthOptionValue);
 
     public void setOnClickSubmenuView(String mainMenuTitle, boolean isViewOpen) {
         if (getSubMenu(mainMenuTitle) == null) {
