@@ -1,13 +1,13 @@
+general:
+  artifacts:
+      - /home/ubuntu/ExpandableRecyclerView/app/build/outputs/apk/
+
 dependencies:
   override:
-     - chmod +x gradlew
-     - ./gradlew assemble
+      - chmod +x gradlew
+      - ./gradlew assemble
 #  pre:
 #    - echo y | android update sdk --no-ui --all --filter "android-23"
 #    - echo y | android update sdk --no-ui --all --filter "build-tools-23.0.2"
 #    - echo y | android update sdk --no-ui --all --filter "extra-android-m2repository"
 #    - echo y | android update sdk --no-ui --all --filter "extra-google-m2repository"
-
-  general:
-      artifacts:
-          - /home/ubuntu/ExpandableRecyclerView/app/build/outputs/apk/
