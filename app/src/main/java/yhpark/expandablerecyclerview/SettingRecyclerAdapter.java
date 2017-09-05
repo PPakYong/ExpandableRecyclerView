@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -168,11 +169,11 @@ public abstract class SettingRecyclerAdapter extends RecyclerView.Adapter<ListVi
         }
 
         if (menu.getOptionType() != TYPE_HEADER && menu.getOptionType() != TYPE_FOOTER) {
-            if (!FormatUtil.isNullorEmpty(menu.getTitle()) && menu.getTitle().equals("untitle")) {
+            if (!TextUtils.isEmpty(menu.getTitle()) && menu.getTitle().equals("untitle")) {
                 holder.llCategory.setVisibility(View.VISIBLE);
                 holder.tvCategory.setVisibility(View.GONE);
                 holder.tvCategory.setText(menu.getTitle());
-            } else if (!FormatUtil.isNullorEmpty(menu.getTitle())) {
+            } else if (!TextUtils.isEmpty(menu.getTitle())) {
                 holder.llCategory.setVisibility(View.VISIBLE);
                 holder.tvCategory.setVisibility(View.VISIBLE);
                 holder.tvCategory.setText(menu.getTitle());
@@ -183,7 +184,7 @@ public abstract class SettingRecyclerAdapter extends RecyclerView.Adapter<ListVi
             holder.tvOptionNm.setText(menu.getMenuNm());
             holder.tvOptionValue.setText(menu.getOptionValue());
 
-            if (!FormatUtil.isNullorEmpty(menu.getOptionValue()) && isOptionDisable(menu.getOptionValue())) {
+            if (!TextUtils.isEmpty(menu.getOptionValue()) && isOptionDisable(menu.getOptionValue())) {
                 holder.tvOptionValue.setTextColor(Color.GRAY);
             } else {
                 holder.tvOptionValue.setTextColor(Color.BLACK);
